@@ -68,7 +68,7 @@ const MapContainer = ({ array, isAdding, getLocation }) => {
     <>
       <LoadScript
         id="script-loader"
-        googleMapsApiKey='API_KEY'
+        googleMapsApiKey='AIzaSyCBUJig5mJCcdb4axccXi-A-JcjSFFasbQ'
       >
         <GoogleMap
           id='example-map'

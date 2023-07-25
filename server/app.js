@@ -8,7 +8,8 @@ const app = express();
 
 app.use(cors());
 
-mongoose.connect('mongodb+srv://test:test@cluster0-34ghs.mongodb.net/test?retryWrites=true&w=majority', {
+//mongodb://localhost:27017/test?retryWrites=true&w=majority
+mongoose.connect('mongodb://0.0.0.0:27017', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
    }).then(() => {

@@ -4,7 +4,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import { BrowserRouter as Router, Switch, Route  } from "react-router-dom";
 import Landing from './components/Landing';
 import AddItem from './components/AddItem';
-
+import Navbar from './components/Navbar'
 const client = new ApolloClient({
   uri: 'http://localhost:4000/graphql'
 })
@@ -12,6 +12,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <Router>
+      <Navbar />
       <ApolloProvider client={client}>
         <div className="App">
         <Switch>

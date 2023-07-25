@@ -93,8 +93,18 @@ const Mutation = new GraphQLObjectType({
                 return apartment.save();
             }
         }
+        // ,
+        // deleteApartment: {
+        //     type: ApartmentType,
+        //     args: { id: { type: GraphQLID } },
+        //     resolve(parent, args) {
+        //         deleteApartment()
+        //     }
+        // }
     }
 })
+
+
 
 module.exports = new GraphQLSchema({
     query: RootQuery,
