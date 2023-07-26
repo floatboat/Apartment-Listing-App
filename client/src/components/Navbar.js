@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function App() {
+export default function NavBar() {
   const classes = useStyles();
 
   return (

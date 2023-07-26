@@ -15,67 +15,85 @@ import Avatar from '@material-ui/core/Avatar';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { Link } from "react-router-dom";
 
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//       flexGrow: 1,
-//     },
-//     menuButton: {
-//       marginRight: theme.spacing(2),
-//     },
-//     title: {
-//       flexGrow: 1,
-//     },
-//     container: {
-//       marginTop: theme.spacing(2),
-//     },
-//     paper: {
-//       padding: theme.spacing(2),
-//       color: theme.palette.text.secondary,
-//     },
-//   }));
-
-//   export default function ApartmentList() {
-//     const Apartment = useStyles();
-//   }
+const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    menuButton: {
+      marginRight: theme.spacing(2),
+    },
+    title: {
+      flexGrow: 1,
+    },
+    container: {
+      marginTop: theme.spacing(2),
+    },
+    paper: {
+      padding: theme.spacing(2),
+      color: theme.palette.text.secondary,
+    },
+  }));
 
 export default function List({ loading, error, array }) {
+
+    const classes = useStyles();
 
     if (loading) return <p>Loading...</p>
     if (error) return <p>Error!</p>
 
     return (
         <div className="main-container">
-            {
-            array.map(item => {
-            return (
-                <div className="container" key={item.id}>
-                    <div className="image-container">
-                    <img src={item.image} alt="apartment" className="image"></img>
-                        <div className="price-box">
-                        <p className="text-space">{item.price} €</p>
-                        </div>
-                    </div>
-                    <div className="text-box">
-                        <h3 className="text-space">{item.title}</h3>
-                    </div>
-                    <div className="info-box">
-                        <div className="icon-box">
-                            <img src="./images/check.png" alt="check"></img>
-                            {item.sqm} m2
-                        </div>
-                        <div className="icon-box">
-                            <img src="./images/bedroom.png" alt="bedroom"></img>
-                            {item.bedrooms}
-                        </div>
-                        <div className="icon-box">
-                            <img src="./images/bathroom.png" alt="bathroom"></img>
-                            {item.bathrooms}
-                        </div>
-                    </div>
-                </div>
-            )
-        })
-            }
+            <Box display="flex">
+            <Box flexGrow={1}>
+              <Typography component="h2" variant="h6" color="primary" gutterBottom>
+                Apartments
+              </Typography>
+            </Box>
+            <Box>
+              <Link to="/add">
+                <Button variant="contained" color="primary">
+                  ADD
+                </Button>
+              </Link>
+            </Box>
+          </Box>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="right">ID</TableCell>
+                <TableCell align="center">Image</TableCell>
+                <TableCell align="left">Price</TableCell>
+                <TableCell align="left">Title</TableCell>
+                <TableCell align="left">Square Meters</TableCell>
+                <TableCell align="center">Bedrooms</TableCell>
+                <TableCell align="center">Bathrooms</TableCell>
+                <TableCell align="center">Action</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {array.map(item => (
+                <TableRow key={item.ID}>
+                  <TableCell align="right">{item.id}</TableCell>
+                  <TableCell align="center">
+                    <Box display="flex" justifyContent="center">
+                      <Avatar src={item.image} />
+                    </Box>
+                  </TableCell>
+                  <TableCell align="left">{item.price}</TableCell>
+                  <TableCell align="left">{item.title}</TableCell>
+                  <TableCell align="left">{item.sqm}</TableCell>
+                  <TableCell align="left">{item.bedrooms}</TableCell>
+                  <TableCell align="left">{item.bathrooms}</TableCell>
+                  <TableCell align="center">
+                    <ButtonGroup color="primary" aria-label="outlined primary button group">
+                      <Button >Edit</Button>
+                      <Button >Del</Button>
+                    </ButtonGroup>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
     )
 }
