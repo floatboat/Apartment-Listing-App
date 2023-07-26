@@ -65,8 +65,8 @@ export default function List({ loading, error, array }) {
                 <TableCell align="left">Price</TableCell>
                 <TableCell align="left">Title</TableCell>
                 <TableCell align="left">Square Meters</TableCell>
-                <TableCell align="center">Bedrooms</TableCell>
-                <TableCell align="center">Bathrooms</TableCell>
+                <TableCell align="left">Bedrooms</TableCell>
+                <TableCell align="left">Bathrooms</TableCell>
                 <TableCell align="center">Action</TableCell>
               </TableRow>
             </TableHead>
