@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { useMutation } from '@apollo/react-hooks';
 import { addApartmentMutation } from '../queries/query';
+import { useHistory } from 'react-router-dom';
 
 export default function InputDetails({ location }) {
+
+    const history = useHistory();
 
     const [ addApartment, { data } ] = useMutation(addApartmentMutation);
 
@@ -47,7 +50,8 @@ export default function InputDetails({ location }) {
                 { variables: { title: state.title, price: Number(state.price), sqm: Number(state.sqm),
                     bedrooms: Number(state.bedrooms), bathrooms: Number(state.bathrooms), image: state.image,
                     lat: state.lat, lng: state.lng }}
-                )}} >
+                );
+                history.push('/'); window.location.reload(false);}} >
             Add
             </Button>
         </div>

@@ -92,15 +92,37 @@ const Mutation = new GraphQLObjectType({
                 });
                 return apartment.save();
             }
+        },
+        updateApartment: {
+            type: ApartmentType,
+            args: {
+                id: { type: GraphQLID },
+                title: { type: GraphQLString },
+                price: { type: GraphQLInt },
+                sqm: { type: GraphQLInt },
+                bedrooms: { type: GraphQLInt },
+                bathrooms: { type: GraphQLInt },
+                image: { type: GraphQLString },
+                lat: { type: GraphQLFloat },
+                lng: { type: GraphQLFloat }
+            },
+            resolve(parent, args) {
+                let apartment = Apartment.findByIdAndUpdate(args.id, args, { "new": true});
+                return apartment;
+            }
+        },
+
+        deleteApartment: {
+            type: ApartmentType,
+            args: {
+              id: { type: GraphQLID }
+            },
+            resolve(parent, args) {
+              let apartment = Apartment.findByIdAndDelete(args.id);
+              return apartment;
+          }
         }
-        // ,
-        // deleteApartment: {
-        //     type: ApartmentType,
-        //     args: { id: { type: GraphQLID } },
-        //     resolve(parent, args) {
-        //         deleteApartment()
-        //     }
-        // }
+
     }
 })
 

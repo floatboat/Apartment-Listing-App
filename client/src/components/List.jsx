@@ -14,6 +14,9 @@ import TableRow from '@material-ui/core/TableRow';
 import Avatar from '@material-ui/core/Avatar';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { Link } from "react-router-dom";
+import { deleteApartmentMutation } from '../queries/query';
+import { useMutation } from '@apollo/react-hooks';
+import { updateApartmentMutation } from '../queries/query';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -35,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 export default function List({ loading, error, array }) {
+
+    const [ deleteApartment, { data } ] = useMutation(deleteApartmentMutation);
+    const [ updateApartment, { } ] = useMutation(updateApartmentMutation);
 
     const classes = useStyles();
 
@@ -86,8 +92,8 @@ export default function List({ loading, error, array }) {
                   <TableCell align="left">{item.bathrooms}</TableCell>
                   <TableCell align="center">
                     <ButtonGroup color="primary" aria-label="outlined primary button group">
-                      <Button >Edit</Button>
-                      <Button >Del</Button>
+                      <Button onClick={() => {updateApartment( { variables: { id: item.id } }); window.location.reload(false)}}>Edit</Button>
+                      <Button onClick={() => {deleteApartment( { variables: { id: item.id } }); window.location.reload(false)}}>Del</Button>
                     </ButtonGroup>
                   </TableCell>
                 </TableRow>

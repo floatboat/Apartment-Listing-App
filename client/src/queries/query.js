@@ -69,4 +69,27 @@ const addApartmentMutation = gql`
     }
 `;
 
-export { getApartments, getApartmentQuery, getFilteredQuery, addApartmentMutation };
+const deleteApartmentMutation = gql`
+mutation deleteApartment($id: ID) {
+    deleteApartment(id: $id) {
+        id
+    }
+}
+`;
+
+
+const updateApartmentMutation = gql`
+    mutation updateApartment($id: ID, $title: String, $price: Int, $sqm: Int, $bedrooms: Int, $bathrooms: Int) {
+        updateApartment(id: $id, title: $title, price: $price, sqm: $sqm) {
+            title
+            price
+            sqm
+            bedrooms
+            bathrooms
+        }
+    }
+`;
+
+
+export { getApartments, getApartmentQuery, getFilteredQuery, addApartmentMutation, deleteApartmentMutation, updateApartmentMutation };
+
