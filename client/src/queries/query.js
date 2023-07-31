@@ -80,7 +80,7 @@ mutation deleteApartment($id: ID) {
 
 const updateApartmentMutation = gql`
     mutation updateApartment($id: ID, $title: String, $price: Int, $sqm: Int, $bedrooms: Int, $bathrooms: Int) {
-        updateApartment(id: $id, title: $title, price: $price, sqm: $sqm) {
+        updateApartment(id: $id, title: $title, price: $price, sqm: $sqm, bedrooms: $bedrooms, bathrooms: $bathrooms) {
             title
             price
             sqm

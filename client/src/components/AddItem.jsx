@@ -13,13 +13,21 @@ export default function AddItem() {
     setShowMap(false);
   };
 
+  const apartment = {title: '',
+  price: 0,
+  sqm: 0,
+  bathrooms: 0,
+  bedrooms: 0,
+  image: '',
+  lat: location.lat,
+  lng: location.ln};
   return (
     <div>
       <h2>Add</h2>
         {
           showMap ?
           <MapContainer isAdding getLocation={getLocation} /> :
-          <InputDetails location={location} />
+          <InputDetails location={location} apartment={apartment} />
         }
     </div>
   )

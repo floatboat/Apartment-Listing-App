@@ -92,7 +92,7 @@ export default function List({ loading, error, array }) {
                   <TableCell align="left">{item.bathrooms}</TableCell>
                   <TableCell align="center">
                     <ButtonGroup color="primary" aria-label="outlined primary button group">
-                      <Button onClick={() => {updateApartment( { variables: { id: item.id } }); window.location.reload(false)}}>Edit</Button>
+                      <Button onClick={() => window.location.href = "/update/" + item.id }>Edit</Button>
                       <Button onClick={() => {deleteApartment( { variables: { id: item.id } }); window.location.reload(false)}}>Del</Button>
                     </ButtonGroup>
                   </TableCell>
