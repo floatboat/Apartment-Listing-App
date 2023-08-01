@@ -20,7 +20,20 @@ export default function Landing() {
     setShowMap(!showMap);
   };
 
+  const handleRadioChange = (event) => {
+    const { name, value } = event.target;
+
+    if (value === 'showLanding') {
+      setShowLanding();
+      setShowMap();
+    } else if (value === 'showMap') {
+      setShowLanding();
+      setShowMap();
+    }
+  };
+
   const landingPage = () => {
+    
     if (showLanding && data) {
       if (showMap) {
         return <MapContainer array={data.apartments} loading={loading} error={error} />
@@ -33,7 +46,7 @@ export default function Landing() {
 
   return (
     <div>
-      <Navbar clickHandler={clickHandler} onShowMap={onShowMap} showMap={showMap} />
+      <Navbar clickHandler={clickHandler} showMap={showMap} onShowMap={onShowMap} />
       { landingPage() } 
     </div>
   )

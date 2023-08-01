@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function NavBar() {
+export default function NavBar({ showMap, onShowMap }) {
   const classes = useStyles();
 
   return (
@@ -38,6 +38,8 @@ export default function NavBar() {
               CRUD
             </Typography>
           </Link>
+        <input type="radio" name="mapOrList" value="true" checked={true === showMap} onChange={onShowMap} /> Show Map
+        <input type="radio" name="mapOrList" value="false" checked={false === showMap} onChange={onShowMap} /> Show List
         </Toolbar>
       </AppBar>
     </div>
