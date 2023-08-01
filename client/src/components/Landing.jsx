@@ -10,6 +10,7 @@ export default function Landing() {
 
   const [ showLanding, setShowLanding ] = useState(true);
   const [ showMap, setShowMap ] = useState(false);
+  const [ showFilter, setShowFilter ] = useState(false);
   
   const { loading, error, data } = useQuery(getApartments);
 
@@ -18,6 +19,9 @@ export default function Landing() {
   };
   const onShowMap = () => {
     setShowMap(!showMap);
+  };
+  const onShowFilter = () => {
+    setShowFilter(!showFilter);
   };
 
   const handleRadioChange = (event) => {
@@ -32,21 +36,41 @@ export default function Landing() {
     }
   };
 
+  const displayFilter = () => {
+    if (showFilter) {
+      return ( 
+      <Filter />
+      )
+    }
+  }
+
   const landingPage = () => {
     
     if (showLanding && data) {
       if (showMap) {
-        return <MapContainer array={data.apartments} loading={loading} error={error} />
+        return (
+        <div>
+          { displayFilter() }
+          <MapContainer array={data.apartments} loading={loading} error={error} />
+        </div>
+        )
       }
-      return <List array={data.apartments} loading={loading} error={error} />
-    } else {
-      return <Filter showLanding={showLanding} showMap={showMap} />
-    }
+      else {
+        return (
+          <div>
+            { displayFilter() }
+            <List array={data.apartments} loading={loading} error={error} />
+          </div>
+        )
+      }
+      
+      // return <List array={data.apartments} loading={loading} error={error} />
+    } 
   }
 
   return (
     <div>
-      <Navbar clickHandler={clickHandler} showMap={showMap} onShowMap={onShowMap} />
+      <Navbar clickHandler={clickHandler} showMap={showMap} onShowMap={onShowMap} showFilter={showFilter} onShowFilter={onShowFilter} />
       { landingPage() } 
     </div>
   )

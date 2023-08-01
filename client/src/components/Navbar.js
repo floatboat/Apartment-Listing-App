@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function NavBar({ showMap, onShowMap }) {
+export default function NavBar({ showMap, onShowMap, showFilter, onShowFilter }) {
   const classes = useStyles();
 
   return (
@@ -40,6 +40,7 @@ export default function NavBar({ showMap, onShowMap }) {
           </Link>
         <input type="radio" name="mapOrList" value="true" checked={true === showMap} onChange={onShowMap} /> Show Map
         <input type="radio" name="mapOrList" value="false" checked={false === showMap} onChange={onShowMap} /> Show List
+        <input type="checkbox" name="filter" value="false" checked={showFilter === true} onChange={onShowFilter}/> Show Filter
         </Toolbar>
       </AppBar>
     </div>

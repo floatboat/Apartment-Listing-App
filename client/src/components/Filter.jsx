@@ -5,9 +5,7 @@ import Button from '@material-ui/core/Button';
 import List from './List';
 import MapContainer from './MapContainer';
 
-export default function Filter({ showMap, showLanding}) {
-
-  const [ showList, setShowList ] = useState(false);
+export default function Filter() {
 
   const [ state, setState ] = useState({
     price1: 0,
@@ -27,21 +25,10 @@ export default function Filter({ showMap, showLanding}) {
     })
   };
 
-  const mapOrList = () => {
-    if (!showMap && !showLanding) {
-      return <List array={data.apartmentsFilter} loading={loading} error={error} />
-    } else if (showMap && !showLanding) {
-      return <MapContainer array={data.apartmentsFilter} loading={loading} error={error} />
-    }
-  }
-
   return (
     <div className="filter-container">
       {
-        showList && data ? 
-        mapOrList()
-        :
-        <>
+        <div>
         <h4>Precio</h4>
           <input type="number" name="price1" placeholder="" onChange={(event) => changeHandler(event)}/>
           <input type="number" name="price2" placeholder="" onChange={(event) => changeHandler(event)}/>
@@ -54,11 +41,10 @@ export default function Filter({ showMap, showLanding}) {
         <Button variant="contained" color="secondary" onClick={() => { getApartment({ variables: { price1: Number(state.price1), 
                   price2: Number(state.price2), sqm1: Number(state.sqm1), sqm2: Number(state.sqm2),
                   bedrooms: Number(state.bedrooms) }});
-                  setShowList(true);
                   }}>
           Search
         </Button>
-        </>
+        </div>
         }
     </div>
   )
