@@ -40,13 +40,19 @@ export default function NavBar({ showMap, onShowMap, showFilter, onShowFilter })
             </Typography>
           </Link>
         <div className="form-container">
-            <div>
-                <label>Show Map</label>
+            <div class="radio-container">
+                <label>Show Map
                 <input type="radio" name="mapOrList" value="true" checked={true === showMap} onChange={onShowMap} />
+                <span class="rcheckmark"></span>
+                </label>
+                
             </div>
-            <div>
-                <label>Show List</label>
+            <div class="radio-container">
+                <label>Show List
                 <input type="radio" name="mapOrList" value="false" checked={false === showMap} onChange={onShowMap} /> 
+                <span class="rcheckmark"></span>
+                </label>
+                
             </div>
             <div class="checkbox-container">
                 <label>Show Filter
