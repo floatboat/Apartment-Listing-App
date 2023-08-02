@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Link } from "react-router-dom";
+import './styles.css'; // Import your CSS file
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,9 +39,21 @@ export default function NavBar({ showMap, onShowMap, showFilter, onShowFilter })
               CRUD
             </Typography>
           </Link>
-        <input type="radio" name="mapOrList" value="true" checked={true === showMap} onChange={onShowMap} /> Show Map
-        <input type="radio" name="mapOrList" value="false" checked={false === showMap} onChange={onShowMap} /> Show List
-        <input type="checkbox" name="filter" value="false" checked={showFilter === true} onChange={onShowFilter}/> Show Filter
+        <div className="form-container">
+            <div>
+                <label>Show Map</label>
+                <input type="radio" name="mapOrList" value="true" checked={true === showMap} onChange={onShowMap} />
+            </div>
+            <div>
+                <label>Show List</label>
+                <input type="radio" name="mapOrList" value="false" checked={false === showMap} onChange={onShowMap} /> 
+            </div>
+            <div>
+                <label>Show Filter</label>
+                <input type="checkbox" name="filter" value="false" checked={showFilter === true} onChange={onShowFilter}/> 
+            </div>
+            
+        </div>
         </Toolbar>
       </AppBar>
     </div>

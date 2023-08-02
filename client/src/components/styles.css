@@ -1,0 +1,19 @@
+.form-container {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    /* align-items: flex-start; */
+    align-items: center;
+    width: 100%;
+    margin-left: 100px;
+    /* You can also add spacing between the label and input if needed */
+    /* margin-bottom: 10px; */
+  }
+
+.input {
+    width: 10px;
+}
+
+/* .form-container > input {
+    width: 10%;
+} */
