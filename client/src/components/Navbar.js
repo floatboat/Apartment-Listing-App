@@ -48,9 +48,11 @@ export default function NavBar({ showMap, onShowMap, showFilter, onShowFilter })
                 <label>Show List</label>
                 <input type="radio" name="mapOrList" value="false" checked={false === showMap} onChange={onShowMap} /> 
             </div>
-            <div>
-                <label>Show Filter</label>
-                <input type="checkbox" name="filter" value="false" checked={showFilter === true} onChange={onShowFilter}/> 
+            <div class="checkbox-container">
+                <label>Show Filter
+                    <input type="checkbox" name="filter" value="false" checked={showFilter === true} onChange={onShowFilter}/> 
+                    <span class="checkmark"></span>
+                </label>
             </div>
             
         </div>
